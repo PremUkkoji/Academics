@@ -1,4 +1,9 @@
 <nav class="navbar navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">{{ title }}</span>
 </nav>
-<router-outlet></router-outlet>
+<div *ngIf="loggedIn; else logIn">
+    <router-outlet></router-outlet>
+</div>
+<ng-template #logIn>
+    <app-login></app-login>
+</ng-template>

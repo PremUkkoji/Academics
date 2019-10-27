@@ -10,16 +10,16 @@ import { StudentsListComponent } from './students-list/students-list.component';
 
 const routes: Routes = [
   {
-    path: "/", component: LoginComponent
+    path: "", component: LoginComponent
   },
   {
-    path: "/student-marksheet", component: StudentMarksheetComponent
+    path: "student-marksheet", component: StudentMarksheetComponent
   },
   {
-    path: "/students-list", component: StudentsListComponent
+    path: "students-list", component: StudentsListComponent
   },
   {
-    path: "/student-details", component: StudentDetailsComponent
+    path: "student-details", component: StudentDetailsComponent
   }
 ];
 
