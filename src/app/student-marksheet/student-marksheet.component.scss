@@ -1,0 +1,49 @@
+.studentDetailsContainer{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 10px;
+}
+
+.studentMarksContainer{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 10px;
+}
+
+.inputField{
+    width: 8rem;
+    background-color: #f5f5f5;
+    border: 0px solid #f5f5f5;
+    border-radius: 5px;
+}
+
+.container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.undoButton{
+    margin-right: 20px;
+}
+
+.message{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 80%;
+}
+
+.success-message{
+    color: rgb(22, 201, 22);
+}
+
+.warning-message{
+    color: rgb(245, 245, 21);
+}
+
+.error-message{
+    color: rgb(243, 23, 23);
+}

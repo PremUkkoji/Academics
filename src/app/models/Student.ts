@@ -1,6 +1,10 @@
 export class Student{
-    usn: string;
+    authenticated: boolean;
+    id: string;
     name: string;
     email: string;
+    usn: string;
+    div: string;
     contact: number;
+    message: string;
 }

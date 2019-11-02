@@ -1,9 +1,50 @@
 <nav class="navbar navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">{{ title }}</span>
+    <button *ngIf="loggedIn" class="btn btn-danger" (click)="logOut()">Logout</button>
 </nav>
+<!-- if user is logged in -->
 <div *ngIf="loggedIn; else logIn">
     <router-outlet></router-outlet>
 </div>
+<!-- if user isn't logged in -->
 <ng-template #logIn>
-    <app-login></app-login>
+    <div id="message" class="message">
+        <p *ngIf="message">{{ message }}</p>
+    </div>
+    <div class="row">
+    
+        <div class="col">
+            <form class="p-4 center">
+                <h3 class="heading">Faculty Login</h3>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input [(ngModel)]="username" name="username" class="form-control" id="username" type="email" >
+                </div>
+                <div class="form-group">
+                    <label for="facultyPassword">Password</label>
+                    <input [(ngModel)]="facultyPassword" name="facultyPassword" type="password" class="form-control" id="facultyPassword">
+                </div>
+                <div class="login-button">
+                    <button type="submit" class="btn btn-primary" (click)="facultyLogIn()">Login</button>
+                </div>
+            </form>
+        </div>
+    
+        <div class="col">
+            <form class="p-4 center">
+                <h3 class="heading">Student Login</h3>
+                <div class="form-group">
+                    <label for="usn">USN</label>
+                    <input [(ngModel)]="usn" name="usn" type="text" class="form-control" id="usn">
+                </div>
+                <div class="form-group">
+                    <label for="studentPassword">Password</label>
+                    <input [(ngModel)]="studentPassword" name="studentPassword" type="password" class="form-control" id="studentPassword">
+                </div>
+                <div class="login-button">
+                    <button type="submit" class="btn btn-primary" (click)="studentLogIn()">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </ng-template>

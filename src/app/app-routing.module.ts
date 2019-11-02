@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-import { LoginComponent } from './login/login.component';
 import { StudentMarksheetComponent } from './student-marksheet/student-marksheet.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentsListComponent } from './students-list/students-list.component';
@@ -10,13 +8,13 @@ import { StudentsListComponent } from './students-list/students-list.component';
 
 const routes: Routes = [
   {
-    path: "", component: LoginComponent
+    path: "", redirectTo: "students-list", pathMatch: "full"
   },
   {
-    path: "student-marksheet", component: StudentMarksheetComponent
+    path: "student-marksheet/:id/:name/:usn/:who", component: StudentMarksheetComponent
   },
   {
-    path: "students-list", component: StudentsListComponent
+    path: "students-list/:who", component: StudentsListComponent
   },
   {
     path: "student-details", component: StudentDetailsComponent

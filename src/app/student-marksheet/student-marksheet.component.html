@@ -1,1 +1,55 @@
-<p>student-marksheet works!</p>
+<div id="message" class="message">
+    <p *ngIf="message">{{ message }}</p>
+</div>
+<div class="studentDetailsContainer">
+    <p>Name: {{ studentName }}</p>
+    <p>USN: {{ studentUsn }}</p>
+</div>
+<div class="studentMarksContainer">
+    <table class="table">
+        <thead>
+            <tr class="bg-primary">
+                <th scope="col">S No.</th>
+                <th scope="col">MAT</th>
+                <th scope="col">DS</th>
+                <th scope="col">ADE</th>
+                <th scope="col">CO</th>
+                <th scope="col">SE</th>
+                <th scope="col">DMS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of [0,1,2]" class="table-active">
+                <th class="bg-primary" scope="row">IA {{ i+1 }}</th>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="mat" value="{{ editIa.mat[i] }}" (input)="matMarksChange($event.target.value, i)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="ds" value="{{ editIa.ds[i] }}" (input)="dsMarksChange($event.target.value, i)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="ade" value="{{ editIa.ade[i] }}" (input)="adeMarksChange($event.target.value, i)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="co" value="{{ editIa.co[i] }}" (input)="coMarksChange($event.target.value, i)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="se" value="{{ editIa.se[i] }}" (input)="seMarksChange($event.target.value, i)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="dms" value="{{ editIa.dms[i] }}" (input)="dmsMarksChange($event.target.value, i)"/></td>
+            </tr>
+            <tr class="table-active">
+                <th class="bg-primary" scope="row">Assignment</th>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="matavg" value="{{ editIa.mat[3] }}" (input)="matMarksChange($event.target.value, 3)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="dsavg" value="{{ editIa.ds[3] }}" (input)="dsMarksChange($event.target.value, 3)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="adeavg" value="{{ editIa.ade[3] }}" (input)="adeMarksChange($event.target.value, 3)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="coavg" value="{{ editIa.co[3] }}" (input)="coMarksChange($event.target.value, 3)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="seavg" value="{{ editIa.se[3] }}" (input)="seMarksChange($event.target.value, 3)"/></td>
+                <td><input [readonly]="!readOnly" class="inputField" type="number" name="dmsavg" value="{{ editIa.dms[3] }}" (input)="dmsMarksChange($event.target.value, 3)"/></td>
+            </tr>
+            <tr class="table-active">
+                <th class="bg-primary">Average</th>
+                <td>{{ editIa.matAvg }}</td>
+                <td>{{ editIa.dsAvg }}</td>
+                <td>{{ editIa.adeAvg }}</td>
+                <td>{{ editIa.coAvg }}</td>
+                <td>{{ editIa.seAvg }}</td>
+                <td>{{ editIa.dmsAvg }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <button [hidden]="showButton" class="btn btn-secondary undoButton" (click)="undoChanges()">Reset</button>
+    <button [hidden]="showButton" class="btn btn-primary saveButton" (click)="saveMarks()">Save</button>
+</div>

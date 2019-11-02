@@ -1,0 +1,39 @@
+.container{
+    margin-top: 50px;
+}
+
+.message{
+    text-align: center;
+    font-size: 80%;
+}
+
+.button-container{
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table{
+    margin-top: 20px;
+}
+
+.cursorPointer{
+    cursor: pointer;
+}
+
+i{
+    cursor: pointer;
+}
+
+.success-message{
+    color: rgb(22, 201, 22);
+}
+
+.warning-message{
+    color: rgb(245, 245, 21);
+}
+
+.error-message{
+    color: rgb(243, 23, 23);
+}

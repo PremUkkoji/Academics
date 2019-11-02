@@ -1,1 +1,171 @@
-<p>students-list works!</p>
+<div class="container">
+    <div id="message" class="message">
+        <p *ngIf="message">{{ message }}</p>
+    </div>
+    <div class="row button-container">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#createStudent" (click)="addStudent()"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Student</button>
+    </div>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="diva-tab" data-toggle="tab" href="#diva" role="tab" aria-controls="diva" aria-selected="true">Division A</a>
+            <a class="nav-item nav-link" id="divb-tab" data-toggle="tab" href="#divb" role="tab" aria-controls="divb" aria-selected="false">Division B</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="diva" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table class="table">
+                <thead>
+                    <tr class="bg-primary">
+                        <th scope="col">S No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">USN</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of aDivStudents; index as i;" class="table-active">
+                        <th scope="row">{{ i+1 }}</th>
+                        <td class="cursorPointer" (click)="goToMarkSheet(student)">{{ student.name }}</td>
+                        <td class="cursorPointer" (click)="goToMarkSheet(student)">{{ student.usn }}</td>
+                        <td>
+                            <i class="fa fa-lg fa-pencil" aria-hidden="true" data-toggle="modal" data-target="#updateStudent" (click)="changeModalStudent(student)"></i>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-lg fa-phone" aria-hidden="true" data-toggle="modal" data-target="#showStudentDetails" (click)="changeModalStudent(student)"></i>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-lg fa-trash-o" aria-hidden="true" (click)="deleteStudent(student)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="divb" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <table class="table">
+                <thead>
+                    <tr class="bg-primary">
+                        <th scope="col">S No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">USN</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of bDivStudents; index as i;" class="table-active">
+                        <th scope="row">{{ i+1 }}</th>
+                        <td class="cursorPointer" (click)="goToMarkSheet(student)">{{ student.name }}</td>
+                        <td class="cursorPointer" (click)="goToMarkSheet(student)">{{ student.usn }}</td>
+                        <td>
+                            <i class="fa fa-lg fa-pencil" aria-hidden="true" data-toggle="modal" data-target="#updateStudent" (click)="changeModalStudent(student)"></i>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-lg fa-phone" aria-hidden="true" data-toggle="modal" data-target="#showStudentDetails" (click)="changeModalStudent(student)"></i>&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-lg fa-trash-o" aria-hidden="true" (click)="deleteStudent(student)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Student Details Modal -->
+<div class="modal fade" id="showStudentDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Details of {{ modalStudent.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Email: {{ modalStudent.email }}</p>
+                <p>Contact: {{ modalStudent.contact }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Student Modal -->
+<div class="modal fade" id="updateStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="form-group">
+                  <label for="name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" id="name" value="{{ modalStudent.name }}" name="name" [(ngModel)]="student.name">
+              </div>
+              <div class="form-group">
+                  <label for="usn" class="col-form-label">USN:</label>
+                  <input type="text" class="form-control" id="usn" value="{{ modalStudent.usn }}" name="usn" [(ngModel)]="student.usn">
+              </div>
+              <div class="form-group">
+                  <label for="div" class="col-form-label">Division:</label>
+                  <input type="text" class="form-control" id="div" value="{{ modalStudent.div }}" name="div" [(ngModel)]="student.div">
+              </div>
+              <div class="form-group">
+                  <label for="email" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="email" value="{{ modalStudent.email }}" name="email" [(ngModel)]="student.email">
+              </div>
+              <div class="form-group">
+                  <label for="contact" class="col-form-label">Contact:</label>
+                  <input type="email" class="form-control" id="contact" value="{{ modalStudent.contact }}" name="contact" [(ngModel)]="student.contact">
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateStudent()">Save</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Create Student Modal -->
+<div class="modal fade" id="createStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <div *ngIf="div != ''; else noDiv;">
+                <h5 class="modal-title" id="exampleModalLabel">Add Student to "{{ div }}" Division</h5>
+            </div>
+            <ng-template #noDiv>
+                <h5 class="modal-title" id="exampleModalLabel">Add Student</h5>
+            </ng-template>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="form-group">
+                  <label for="name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="student.name">
+              </div>
+              <div class="form-group">
+                  <label for="usn" class="col-form-label">USN:</label>
+                  <input type="text" class="form-control" id="usn" name="usn" [(ngModel)]="student.usn">
+              </div>
+              <div class="form-group">
+                  <label for="div" class="col-form-label">Division:</label>
+                  <input type="text" class="form-control" id="div" placeholder="A or B" name="div" [(ngModel)]="student.div">
+              </div>
+              <div class="form-group">
+                  <label for="email" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="student.email">
+              </div>
+              <div class="form-group">
+                  <label for="contact" class="col-form-label">Contact:</label>
+                  <input type="email" class="form-control" id="contact" name="contact" [(ngModel)]="student.contact">
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createStudent()">Save</button>
+        </div>
+      </div>
+    </div>
+</div>

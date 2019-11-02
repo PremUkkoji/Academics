@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { StudentMarksheetComponent } from './student-marksheet/student-marksheet.component';
 import { StudentsListComponent } from './students-list/students-list.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
@@ -12,15 +13,16 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     StudentMarksheetComponent,
     StudentsListComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
